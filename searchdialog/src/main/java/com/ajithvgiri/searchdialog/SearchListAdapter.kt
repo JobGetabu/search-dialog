@@ -40,12 +40,13 @@ class SearchListAdapter(context: Context, objects: ArrayList<SearchListItem>) : 
         return position
     }
 
-    override fun getView(i: Int, view: View, parent: ViewGroup): View {
+
+    override fun getView(i: Int, view: View?, parent: ViewGroup): View {
         var inflateview = view
         if (inflateview == null) {
             inflateview = LayoutInflater.from(context).inflate(R.layout.items_view_layout, parent)
         }
-        val tv = inflateview.findViewById<View>(R.id.text1) as TextView
+        val tv = inflateview?.findViewById<View>(R.id.text1) as TextView
         tv.text = searchListItems[i].title
         return inflateview
     }

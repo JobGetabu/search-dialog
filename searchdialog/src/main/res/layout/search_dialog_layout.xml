@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/select_or_search"
+            android:textColor="#000000"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -63,6 +64,7 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="5dp"
+            android:textColor="@color/dark_background"
             android:text="@string/close"
             android:textAllCaps="true" />
 

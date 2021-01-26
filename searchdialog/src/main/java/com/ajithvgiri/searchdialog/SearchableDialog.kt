@@ -2,9 +2,14 @@ package com.ajithvgiri.searchdialog
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
+import android.graphics.Point
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.DisplayMetrics
 import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -64,7 +69,7 @@ class SearchableDialog {
         val dividerItemDecoration = DividerItemDecoration(recyclerView.context, layoutManager.orientation)
         recyclerView.addItemDecoration(dividerItemDecoration)
         val searchBox = view.findViewById<View>(R.id.searchBox) as EditText
-        adapter = SearchAdapter(onSearchItemSelected,searchListItems)
+        adapter = SearchAdapter(onSearchItemSelected, searchListItems)
         recyclerView.adapter = adapter
         adb.setView(view)
         alertDialog = adb.create()
@@ -97,11 +102,13 @@ class SearchableDialog {
                         filteredValues.add(item)
                     }
                 }
-                adapter = SearchAdapter(onSearchItemSelected,filteredValues)
+                adapter = SearchAdapter(onSearchItemSelected, filteredValues)
                 recyclerView.adapter = adapter
             }
         })
         rippleViewClose.setOnClickListener { alertDialog.dismiss() }
+        recyclerView.layoutParams.height = (getHeight(activity) * .7).toInt()
+        //recyclerView?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (getHeight(activity) * .9).toInt())
         alertDialog.show()
     }
 
@@ -125,7 +132,7 @@ class SearchableDialog {
      *
      * dismiss the dialog
      */
-    fun dismiss(){
+    fun dismiss() {
         alertDialog.dismiss()
     }
 
@@ -133,3 +140,11 @@ class SearchableDialog {
         private const val TAG = "SearchableDialog"
     }
 }
+
+fun getHeight(context: Context): Int {
+    val displayMetrics = DisplayMetrics()
+    val windowmanager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    windowmanager.defaultDisplay.getMetrics(displayMetrics)
+    return displayMetrics.heightPixels
+}
+

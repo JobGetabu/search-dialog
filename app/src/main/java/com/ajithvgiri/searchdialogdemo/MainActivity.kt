@@ -17,12 +17,12 @@ class MainActivity : AppCompatActivity(), OnSearchItemSelected {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        for (i in 0..9) {
+        for (i in 0..99) {
             val searchListItem = SearchListItem(i, "Country $i")
             searchListItems.add(searchListItem)
         }
 
-        searchableDialog = SearchableDialog(this, searchListItems, getString(R.string.country))
+        searchableDialog = SearchableDialog(this, searchListItems, getString(R.string.country), R.style.MyAlertDialogTheme)
         searchableDialog.setOnItemSelected(this)
 
 
