@@ -3,4 +3,5 @@
     <color name="white">#FFFFFF</color>
     <color name="dark_background">#FF424242</color>
     <color name="color_divider">#d1d1d1</color>
+    <color name="color_primary">#497EB9</color>
 </resources>

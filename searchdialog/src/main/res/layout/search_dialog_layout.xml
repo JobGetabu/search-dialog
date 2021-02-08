@@ -53,6 +53,10 @@
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="true"
+            android:scrollbarThumbVertical="@color/color_primary"
+            android:scrollbarSize="5dp"
             android:divider="@color/color_divider"
             android:dividerHeight="0.1dp" />
 
